@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/_projects\/steamwalker\/wonderland\/development\/www\/themes\/site_themes\/wonderland\/scss\/responsive\.scss}line{font-family:\000033}}
+.mobile {
+  display: none; }
+
+@media (max-width: 320px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/_projects\/steamwalker\/wonderland\/development\/www\/themes\/site_themes\/wonderland\/scss\/responsive\.scss}line{font-family:\000038}}
+  .desktop {
+    display: none; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/_projects\/steamwalker\/wonderland\/development\/www\/themes\/site_themes\/wonderland\/scss\/responsive\.scss}line{font-family:\0000312}}
+  .mobile {
+    display: block; } }

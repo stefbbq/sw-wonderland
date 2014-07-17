@@ -1,0 +1,31 @@
+<!--  Main Menu -->
+<div class="masthead-title"></div>
+<nav class="nav-top desktop">
+    <div class="left">
+        <h2>Wonderland</h2>
+        <p>Printing Limited</p>
+        <p>1-888-WPL-PRNT</p>
+    </div>
+    <ul>
+{exp:channel:entries channel="top_menu" orderby="menu_item_order" sort="asc"}
+        <li><a href="{menu_item_link}">{menu_item_label}</a></li>
+{/exp:channel:entries}	
+{if logged_in}
+        <li>{screen_name} <a href="{path='logout'}">[Logout]</a></li>
+{/if}
+    </ul>
+    
+</nav>
+
+<!--  Mobile Menu -->
+<nav class="nav-top mobile">
+    <h1>Top Menu - Mobile</h1>
+    <!--
+	<ul>
+	{exp:channel:entries channel="about_us" limit="3" orderby="date" sort="asc"}
+    <h2>{title}</h2>
+	    {content}
+	{/exp:channel:entries}	
+	</ul>
+    -->
+</nav>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Portal Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+{if member_group == "6"}
+    {redirect='WPLPortal'}
+{if:elseif member_group == "7" || member_group == "8"}
+    {redirect='clientPortal'}
+{if:else}
+        
+        <h1>Portal Login</h1>
+        
+    {exp:member:login_form return="site/login"}
+        <p>
+                <label>Username</label><br>
+                <input type="text" name="username" value="" maxlength="32" size="25">
+        </p>
+        <p>
+                <label>Password</label><br>
+                <input type="password" name="password" value="" maxlength="32" size="25">
+        </p>
+
+        <!--
+        {if auto_login}
+                <p><input type="checkbox" name="auto_login" value="1"> Auto-login on future visits</p>
+        {/if}
+        <p><input type="checkbox" name="anon" value="1" checked="checked"> Show my name in the online users list</p>
+        -->
+        <p><input type="submit" name="submit" value="Submit"></p>
+        <p><a href="{path='member/forgot_password'}">Forgot your password?</a></p>
+    {/exp:member:login_form}
+
+{/if}
+
+    </body>
+</html>

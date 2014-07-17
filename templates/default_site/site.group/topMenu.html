@@ -1,0 +1,17 @@
+<!--  Main Menu -->
+<div class="masthead-title"></div>
+<h1>Top Menu</h1>
+<nav class="nav-top desktop">
+
+</nav>
+
+<!--  Mobile Menu -->
+<nav class="nav-top mobile">
+	<ul>
+	{exp:channel:entries channel="about_us" limit="3" orderby="date" sort="asc"}
+    <h2>{title}</h2>
+	    {content}
+	{/exp:channel:entries}	
+	</ul>
+
+</nav>

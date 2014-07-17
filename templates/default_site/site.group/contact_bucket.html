@@ -1,0 +1,16 @@
+<div class="contact_bucket">
+    <h1>Contact</h1>
+        {exp:channel:entries channel="contact_us_info" orderby="order" sort="asc"}
+        <p>{contact_body}</p>
+        
+    <ul>
+        <li>Phone: {contact_phone}</li>
+        <li>Fax: {contact_fax}</li>
+        <li>Email: {contact_email}</li>
+        <li>Address: {contact_address}</li>
+    </ul>        
+	{/exp:channel:entries}	
+        
+        <h2>Form</h2>
+        
+</div>

@@ -1,0 +1,36 @@
+<?php
+$THEME = 'site_themes/wonderland/';
+$THEME_CSS = $THEME . 'css/';
+$THEME_CSS_SRC = $THEME . 'css_src/';
+$THEME_JS = $THEME . 'js/';
+$THEME_JS_SRC = $THEME . 'js_src/';
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{theme_folder_url}<?php echo $THEME_CSS?>reset.css">
+    <link rel="stylesheet" type="text/css" href="{theme_folder_url}<?php echo $THEME_CSS?>global.css">
+    <link rel="stylesheet" type="text/css" href="{theme_folder_url}<?php echo $THEME_CSS?>responsive.css">
+
+</head>
+
+<body>
+    <div id="main_wrapper">
+
+        <!-- Begin SPA -- Copy between SPA comments and add to template -->
+        <div class="spa">
+            
+            
+            
+        </div>
+        <!-- End SPA -->
+        
+        <h1>Client Portal</h1>
+        <a href="{path='logout'}">Logout</a>
+    </div>    
+    
+</body>
+
+</html>

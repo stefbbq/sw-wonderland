@@ -1,0 +1,49 @@
+<?php
+$BASE = 'templates/default_site/WPLPortal.group/';
+$CSS = $BASE . 'styles/';
+$JS = $BASE . 'scripts/';
+$BOWER = $BASE . 'bower_components/';
+?>
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Wonderland Printing Limited : Admin</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="{site_url}<?php echo $CSS?>main.css">
+  
+  <body ng-app="wplAdminApp">
+    <!-- Begin SPA -- Copy between SPA comments and add to template -->
+    <div class="spa">
+        <div class="left menu" ng-controller="MenuController">
+            <ul class="nav">
+              <li ng-class="getClass('/listClients')"><a ng-href="#/listClients">Client List</a></li>
+              <li ng-class="getClass('/addClient')"><a ng-href="#/addClient">Add New Client</a></li>
+              <!--
+              <li ng-class="getClass('/addCollateral')"><a ng-href="#/addCollateral">Add New Collateral</a></li>
+              <li ng-class="getClass('/viewCollateral')"><a ng-href="#/viewCollateral">View All Collateral</a></li>
+              -->
+            </ul>
+        </div>
+        <div ng-view="" class="right content"></div>
+
+    </div>
+    <!-- End SPA -->
+    
+      
+ 
+
+    <!--[if lt IE 9]>
+    <script src="{theme_folder_url}<?php echo $BOWER?>es5-shim/es5-shim.js"></script>
+    <script src="{theme_folder_url}<?php echo $BOWER?>json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <script>
+        var basePath = <?php echo "\""?>{site_url}<?php echo $BASE . "\""?>;
+        //var viewExt = ".php";
+    </script>    
+    <script src="{site_url}<?php echo $JS?>vendor.js"></script>
+    <script src="{site_url}<?php echo $JS?>scripts.js"></script>
+

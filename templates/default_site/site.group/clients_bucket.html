@@ -1,0 +1,16 @@
+<div id="clients_bucket" class="bucket">
+    <h1>Clients</h1>
+    
+    <ul>
+        {exp:channel:entries channel="client_list" orderby="client_order" sort="asc"}
+        {if client-class}
+        <li class="{client-class}">
+        {if:else}
+        <li class="">
+        {/if}
+            <p>{client_name}</p>
+            <!-- <img src='{client_logo}'/> -->
+        </li>
+	{/exp:channel:entries}	
+    </ul>    
+</div>

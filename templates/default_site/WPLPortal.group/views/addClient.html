@@ -1,0 +1,75 @@
+<div class="add_client">
+
+    <h2>Add New Client</h2>
+
+    <form id="company_form" name="newCompany" novalidate>
+        <div class="field-group col-3">
+            <label for="company_name">Company Name</label>
+            <input id="company_name" type="text" ng-model="company.name" name="name" required ng-minlength="2" ng-maxlength="50">
+        </div>
+
+        <div class="field-group col-3">
+            <label for="company_address">Company Address</label>
+            <textarea id="company_address" ng-model="company.address" name="address" required></textarea>
+        </div>
+        
+        <div class="fields-row">
+            <div class="field-group col-1">
+                <label for="company_city">City</label>
+                <input id="company_city" ng-model="company.city" name="city" ng-pattern="/^[A-z]+$/" capitalize-first required>
+            </div>
+            <div class="field-group col-1">
+                <label for="company_province">Prov.</label>
+                <select id="company_province" ng-model="company.province" name="province" required>
+                    <option value="AB">Alberta
+                    <option value="BC">British Columbia
+                    <option value="MB">Manitoba
+                    <option value="NB">New Brunswick
+                    <option value="NL">Newfoundland
+                    <option value="NS">Nova Scotia
+                    <option value="NT">Northwest Territories
+                    <option value="NU">Nunavut
+                    <option value="ON">Ontario
+                    <option value="PE">Prince Edward Island
+                    <option value="QC">Quebec
+                    <option value="SK">Saskatchewan
+                    <option value="YT">Yukon
+                </select>
+            </div>
+            <div class="field-group col-1">
+                <label for="company_postal">Postal</label>
+                <input id="company_postal" ng-model="company.postal_code" capitalize ui-mask="A9A 9A9" ng-pattern2="/^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$/" name="postal_code" required>
+            </div>
+            
+        </div>
+        
+        <div class="field-group col-3">
+            <label for="company_email">Order Confirmation Email</label>
+            <input id="company_email" type="email" ng-model="company.email" name="email" required>
+        </div>        
+
+        <div class="field-group col-3">
+            <label for="company_phone1">Primary Phone</label>
+            <input id="company_phone1" ui-mask="(999) 999-9999" type="phone" ng-model="company.phone1" name="phone1" required>
+        </div>        
+        
+        <div class="field-group col-3">
+            <label for="company_phone2">Secondary Phone</label>
+            <input id="company_phone2" ui-mask="(999) 999-9999" ng-model="company.phone2" name="phone2">
+        </div>        
+        
+        <div class="field-group col-3">
+            <label for="company_accEmail">WPL Account Rep. Email</label>
+            <input id="company_accEmail" type="email" ng-model="company.repEmail" name="repEmail" required>
+        </div>        
+
+        <div class="buttons">
+            <button ng-click="reset()">RESET</button>
+            <button ng-click="update(company)">SAVE</button>
+            <button ng-click="autofill()">Auto Fill</button>
+        </div>
+    </form>
+    
+    <pre>form = {{company | json}}</pre>
+
+</div>

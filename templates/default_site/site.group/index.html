@@ -1,0 +1,54 @@
+<?php
+$THEME = 'site_themes/wonderland/';
+$THEME_CSS = $THEME . 'css/';
+$THEME_CSS_SRC = $THEME . 'css_src/';
+$THEME_JS = $THEME . 'js/';
+$THEME_JS_SRC = $THEME . 'js_src/';
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+
+        <!-- Optionally use Animate.css -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.0.0/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="{theme_folder_url}<?php echo $THEME_CSS?>liquid-slider.css">
+	<link rel="stylesheet" type="text/css" href="{theme_folder_url}<?php echo $THEME_CSS?>liquid-slider-2.css">
+    
+        <link rel="stylesheet" type="text/css" href="{theme_folder_url}<?php echo $THEME_CSS?>reset.css">
+	<link rel="stylesheet" type="text/css" href="{theme_folder_url}<?php echo $THEME_CSS?>global.css">
+	<link rel="stylesheet" type="text/css" href="{theme_folder_url}<?php echo $THEME_CSS?>responsive.css">
+        
+        
+	
+        <!-- <script src="{theme_folder_url}<?php echo $THEME_JS?>lib/jquery-1.11.0.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script>
+        <script src="{theme_folder_url}<?php echo $THEME_JS?>lib/jquery.liquid-slider.min.js"></script>
+	
+
+</head>
+
+<body>
+    <div id="main_wrapper">
+        {embed="site/top_menu"} 
+        {embed="site/hero_bucket"} 
+        {embed="site/quote_bucket"} 
+        {embed="site/ad_bucket_1"} 
+        {embed="site/services_bucket"} 
+        {embed="site/ad_bucket_2"} 
+        {embed="site/products_bucket"} 
+        {embed="site/ad_bucket_3"} 
+        {embed="site/about_bucket"} 
+        {embed="site/clients_bucket"} 
+        {embed="site/faq_bucket"} 
+        {embed="site/contact_bucket"} 
+        {embed="site/footer_bucket"} 
+    </div>
+    
+    
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<div id="products_bucket" class="bucket">
+    <h1>Products</h1>
+    <div id="products_slider" class="liquid-slider">
+    {exp:channel:entries channel="products" orderby="order" sort="asc"}
+        <div>
+          <h2 class="title">{heading}</h2>
+          <h3 class="subheading">{subheading}</h3>
+          <p>{body}</p>
+        </div>
+    {/exp:channel:entries}	
+    </div>
+</div>
+
+<script>
+  /**
+   * If you need to access the internal property or methods, use this:
+   * var api = $.data( $('#main-slider')[0], 'liquidSlider');
+   * console.log(api);
+   */
+
+
+  $('#products_slider').liquidSlider({
+      dynamicTabs:false,
+      dynamicArrows:true,
+      dynamicArrowsGraphical:true,
+      hoverArrows:false,
+      autoHeight:false
+  });
+</script> 

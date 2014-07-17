@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+
+.mobile {
+    display: none;
+}
+
+@media (max-width:320px) {
+    .desktop {
+        display: none;
+    }
+    
+    .mobile {
+        display: block;
+    }
+}

@@ -1,0 +1,306 @@
+
+/*
+ Variables
+*/
+$maxSize:1020px;
+
+
+body {
+    
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.desktop .mobile,
+.mobile .desktop {
+    display:none;
+}
+
+#main_wrapper {
+    max-width:$maxSize;
+    margin:0 auto;
+    //background-color:blue;
+}
+
+/*
+ * Top Nav
+ */
+.nav-top {
+    height:50px;
+    background-color:yellow;
+    width:100%;
+    
+    &.desktop {
+        
+        /*position:fixed;*/
+        max-width:$maxSize;
+        .left {
+            float:left;
+        }
+        
+        ul {
+            display: inline-block;
+            float:right;
+            height:100%;
+            padding-top:15px;
+            li {
+                display: inline-block;
+                margin-right:10px;
+            }
+        }
+    }
+}
+
+.bucket {
+    border:1px solid black;
+    
+    h1 {
+        font-size:30px;
+        font-weight:bold;
+        margin-bottom:20px;
+    }
+    
+    h2 {
+        font-size:20px;
+        font-weight:bold;
+        margin-bottom:10px;
+    }
+    
+    h3 {
+        font-size:16px;
+        font-weight:bold;
+        margin-bottom:5px;
+    }
+}
+
+/*
+ * Hero Slider
+ */
+$hero_bucket_height: 420px;
+#hero_bucket {
+    min-height:$hero_bucket_height;
+    background-color: white;
+    
+    
+// Slider
+    .liquid-slider {
+        max-height: $hero_bucket_height;
+        >div {
+            text-align:center;
+            min-height:$hero_bucket_height;
+        }
+        h2 {
+            font-size:30px;
+            margin-top:1em;
+            margin-bottom:1em;
+        }
+        
+        p {
+            text-align:left;
+            width:60%;
+            margin:0 auto;
+        }
+        
+        .panel {
+            height:$hero_bucket_height;
+        }
+    }    
+    
+}
+
+/*
+ * Request a Quote
+ */
+.request_quote {
+    min-height:350px;
+    background-color: orange;
+}
+
+/*
+ * Ad Bucket
+ */
+.ad_bucket {
+    height:140px;
+    background-color: purple;
+}
+
+/*
+ * Services
+ */
+$hero_bucket_height: 350px;
+#services_bucket {
+    min-height:$hero_bucket_height;
+
+    
+    .col {
+        display:inline-block;
+        &.left {
+            width:20%;
+            float:left;
+            
+            a {
+                background-color:grey;
+                color:black;
+                width:70%;
+                padding:5px 0;
+                margin: 0 auto 10px auto;
+                text-align: center;
+                display:block;
+                text-decoration:none;
+                
+                &:hover {
+                    background-color: darkgray;
+                    color:black;
+                }
+            }
+        }
+        &.right {
+            width:80%;
+        }
+    }
+    
+    
+    .liquid-slider {
+        
+        >div {
+            height:$hero_bucket_height;
+            img {
+                float:left;
+                margin-right: 20px;
+            }
+        }
+    }
+    
+}
+
+/*
+ * Products
+ */
+$products_bucket_height: 350px;
+#products_bucket {
+    min-height:$products_bucket_height;
+    background-color: lime;
+    
+// Slider
+    .liquid-slider {
+        max-height: $products_bucket_height;
+        >div {
+            text-align:center;
+            min-height:$products_bucket_height;
+        }
+        h2 {
+            font-size:30px;
+            margin-top:1em;
+            margin-bottom:1em;
+        }
+        
+        p {
+            text-align:left;
+            width:60%;
+            margin:0 auto;
+        }
+        
+        .panel {
+            height:$products_bucket_height;
+        }
+    }    
+    
+}
+
+/*
+ * About
+ */
+$about_bucket_height: 350px;
+#about_bucket {
+    min-height:$about_bucket_height;
+
+    
+    .col {
+        display:inline-block;
+        &.left {
+            width:20%;
+            float:left;
+            
+            a {
+                background-color:grey;
+                color:black;
+                width:70%;
+                padding:5px 0;
+                margin: 0 auto 10px auto;
+                text-align: center;
+                display:block;
+                text-decoration:none;
+                
+                &:hover {
+                    background-color: darkgray;
+                    color:black;
+                }
+            }
+        }
+        &.right {
+            width:80%;
+        }
+    }
+    
+    
+    .liquid-slider {
+        
+        >div {
+            height:$about_bucket_height;
+            img {
+                float:left;
+                margin-right: 20px;
+            }
+        }
+    }
+    
+}
+
+/*
+ * Clients
+ */
+$client_bucket_height:350px;
+#clients_bucket {
+    min-height:$client_bucket_height;
+    
+    li {
+        display:inline-block;
+        margin-right:20px;
+        margin-top:20px;
+        margin-botton:20px;
+        background-color: grey;
+        padding:10px;
+        width:100px;
+        text-align: center;
+        
+    }
+}
+
+/*
+ * FAQ
+ */
+#faq_bucket {
+    min-height:350px;
+    background-color: salmon;
+}
+
+/*
+ * Contact
+ */
+.contact_bucket {
+    min-height:350px;
+    background-color: deepskyblue;
+}
+
+/*
+ * Footer
+ */
+.footer_bucket {
+    min-height:50px;
+    background-color: cadetblue;
+}
+
+
+
