@@ -1,4 +1,8 @@
-<div class="request_quote">
+<div class="request_quote" ng-controller="RequestQuoteCtrl">
     <h1>Request Quote</h1>
-    <p>The form would go here when it's defined</p>
+    <div>
+      <form>
+        <label for="type">Interested In</label><select id="type" ng-model="quote.type" ng-options="type.code as type.name for type in typeProvider.typeList"></select>
+      </form>
+    </div>
 </div>

@@ -11,27 +11,34 @@ $THEME_JS_SRC = $THEME . 'js_src/';
 <html>
 <head>
 
-        <!-- Optionally use Animate.css -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.0.0/animate.min.css">
+  <!-- Optionally use Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.0.0/animate.min.css">
 	<link rel="stylesheet" type="text/css" href="{theme_folder_url}<?php echo $THEME_CSS?>liquid-slider.css">
 	<link rel="stylesheet" type="text/css" href="{theme_folder_url}<?php echo $THEME_CSS?>liquid-slider-2.css">
     
-        <link rel="stylesheet" type="text/css" href="{theme_folder_url}<?php echo $THEME_CSS?>reset.css">
+  <link rel="stylesheet" type="text/css" href="{theme_folder_url}<?php echo $THEME_CSS?>reset.css">
 	<link rel="stylesheet" type="text/css" href="{theme_folder_url}<?php echo $THEME_CSS?>global.css">
 	<link rel="stylesheet" type="text/css" href="{theme_folder_url}<?php echo $THEME_CSS?>responsive.css">
-        
-        
-	
-        <!-- <script src="{theme_folder_url}<?php echo $THEME_JS?>lib/jquery-1.11.0.js"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script>
-        <script src="{theme_folder_url}<?php echo $THEME_JS?>lib/jquery.liquid-slider.min.js"></script>
+
+
+
+  <!-- <script src="{theme_folder_url}<?php echo $THEME_JS?>lib/jquery-1.11.0.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script>
+  <script src="{theme_folder_url}<?php echo $THEME_JS?>lib/jquery.liquid-slider.min.js"></script>
+
+  <script src="{theme_folder_url}<?php echo $THEME_JS_SRC?>lib/angular/ng-file-upload/angular-file-upload-shim.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+  <script src="{theme_folder_url}<?php echo $THEME_JS_SRC?>lib/angular/ng-file-upload/angular-file-upload.js"></script>
+  <!--<script src="{theme_folder_url}<?php echo $THEME_JS_SRC?>lib/angular/angular-route/angular-route.js"></script> -->
+  <script src="{theme_folder_url}<?php echo $THEME_JS_SRC?>src/angular/RequestQuoteController.js"></script>
+
 	
 
 </head>
 
-<body>
+<body ng-app="publicSite">
     <div id="main_wrapper">
         {embed="site/top_menu"} 
         {embed="site/hero_bucket"} 
