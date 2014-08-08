@@ -1,8 +1,56 @@
 <div class="request_quote" ng-controller="RequestQuoteCtrl">
     <h1>Request Quote</h1>
     <div>
-      <form>
-        <label for="type">Interested In</label><select id="type" ng-model="quote.type" ng-options="type.code as type.name for type in typeProvider.typeList"></select>
+      <form name="requestQuote" novalidate>
+        <ul>
+          <li>
+            <label for="type">Interested In</label><select id="type" ng-model="quote.type" ng-options="type.code as type.name for type in provider.typeList" required></select>
+          </li>
+          <li>
+            <label for="size">Finished Size</label><input id="size" ng-model="quote.size" type="text">
+          </li>
+          <li>
+            <label for="quantity">Quantity</label><input id="quantity" ng-model="quote.quantity" type="text" restrict="0-9">
+          </li>
+          <li>
+            <label for="pageCount">Number of Pages</label><input id="quantity" ng-model="quote.pageCount" type="text" restrict="0-9">
+          </li>
+          <li>
+            <label for="finish">Paper Finish</label><select id="finish" ng-model="quote.finish" ng-options="type.code as type.name for type in provider.fakeDDContent" required></select>
+          </li>
+          <li>
+            <label for="weight">Paper Weight</label><select id="weight" ng-model="quote.weight" ng-options="type.code as type.name for type in provider.fakeDDContent" required></select>
+          </li>
+          <li>
+            <label for="recycled">Recycled Opt.</label><select id="recycled" ng-model="quote.recycled" ng-options="type.code as type.name for type in provider.fakeDDContent" required></select>
+          </li>
+          <li>
+            <label for="colours">Ink Colours</label><select id="colours" ng-model="quote.colours" ng-options="type.code as type.name for type in provider.fakeDDContent" required></select>
+          </li>
+          <li>
+            <label for="sides">Sites to Print</label><select id="sides" ng-model="quote.sides" ng-options="type.code as type.name for type in provider.fakeDDContent" required></select>
+          </li>
+          <li>
+            <label for="specialFX">Special Effects</label><select id="specialFX" ng-model="quote.specialFX" ng-options="type.code as type.name for type in provider.fakeDDContent" required></select>
+          </li>
+          
+          <li>
+            <label for="finish">Finish/Binding</label><select id="finish" ng-model="quote.finish" ng-options="type.code as type.name for type in provider.typeList" required></select>
+          </li>
+          <li>
+            <label for="file">Attach File</label><input id="file" ng-model="quote.file" type="file">
+          </li>
+          <li class="description">
+            <label for="description">Description</label><textarea id="description" ng-model="quote.description"></textarea>
+          </li>
+          <li class="buttons">
+            <input type="submit" value="Submit">
+          </li>
+        </ul>
+        
+        
+        
+        
       </form>
     </div>
 </div>

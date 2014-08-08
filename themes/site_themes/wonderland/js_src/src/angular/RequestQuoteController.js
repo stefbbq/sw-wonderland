@@ -13,8 +13,9 @@ angular.module('publicSite', [])
       break;
   }
 }])
-.factory('typeProvider', ['$http', '$rootScope', function($http, $rootScope) {
+.factory('requestQuoteProvider', ['$http', '$rootScope', function($http, $rootScope) {
   var typeList = [];
+  var fakeDDContent = [];
   function getTypeList() {
     var args = {action:'typeList'};
     
@@ -29,23 +30,39 @@ angular.module('publicSite', [])
     });
   }
   
+  function getDDList() {
+    var args = {action:'ddContent'};
+    
+    $http.jsonp($rootScope.wsURL, {
+      params:args,
+      header: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    }).success(function(result) {
+      angular.copy(result.data, fakeDDContent);
+      console.log(typeList);
+    }).error(function(result) {
+      console.log(result);
+    });
+  }
+  
   
     
   return {
     getTypeList:getTypeList,
-    typeList:typeList
+    typeList:typeList,
+    getFakeDDContent:getDDList,
+    fakeDDContent:fakeDDContent
   };
 }])
 
-.controller('RequestQuoteCtrl', ['$scope', 'typeProvider', function($scope, typeProvider) {
-    $scope.typeProvider = typeProvider;
-    $scope.typeList = typeProvider.typeList;
+.controller('RequestQuoteCtrl', ['$scope', 'requestQuoteProvider', function($scope, requestQuoteProvider) {
+    $scope.provider = requestQuoteProvider;
     
     $scope.quote = {};
     
     
     function construct() {
-      typeProvider.getTypeList();
+      requestQuoteProvider.getTypeList();
+      requestQuoteProvider.getFakeDDContent();
     }
     
     construct();

@@ -1,0 +1,39 @@
+/* 
+    Created on : 7-Aug-2014, 9:08:02 AM
+    Author     : Scott David Garson
+*/
+.request_quote {
+  form {
+    position:relative;
+    ul {
+      columns:200px 2;
+      -webkit-columns:200px 2;
+      -moz-columns:200px 2;
+    }
+    
+    li {
+      vertical-align: top;
+    }
+    
+    
+    label {
+      display:inline-block;
+      width:30%;
+      
+    }
+    
+    li.description {
+      label {
+        display:block;
+      }
+      textarea {
+        width:60%;
+        height:5em;
+      }
+    }
+    
+    
+  }
+  
+} 
+
