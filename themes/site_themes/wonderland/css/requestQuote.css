@@ -18,3 +18,5 @@
   .request_quote form li.description textarea {
     width: 60%;
     height: 5em; }
+  .request_quote form button:disabled {
+    color: #cccccc; }

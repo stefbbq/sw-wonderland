@@ -1,4 +1,6 @@
-angular.module('publicSite', [])
+angular.module('publicSite', [
+  'angularFileUpload'
+])
 .run(['$rootScope', '$location', function($rootScope, $location) {
   switch ($location.host()) {
     case 'wonderland-cp.stagebot.net':
@@ -13,7 +15,7 @@ angular.module('publicSite', [])
       break;
   }
 }])
-.factory('requestQuoteProvider', ['$http', '$rootScope', function($http, $rootScope) {
+.factory('requestQuoteProvider', ['$http', '$rootScope', '$upload', function($http, $rootScope, $upload) {
   var typeList = [];
   var fakeDDContent = [];
   function getTypeList() {
@@ -24,7 +26,7 @@ angular.module('publicSite', [])
       header: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }).success(function(result) {
       angular.copy(result.data, typeList);
-      console.log(typeList);
+      //console.log(typeList);
     }).error(function(result) {
       console.log(result);
     });
@@ -38,31 +40,78 @@ angular.module('publicSite', [])
       header: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }).success(function(result) {
       angular.copy(result.data, fakeDDContent);
-      console.log(typeList);
     }).error(function(result) {
       console.log(result);
     });
   }
   
+    /*
+   * Save to Dropbox
+   */
+  function submitQuoteRequest(quoteData, file, onProgress, onComplete) {
+    var url = $rootScope.wsDropboxURL + '?action=quoteRequest';
+    $upload.upload({
+      url:url,
+      method:'POST',
+      data:quoteData,
+      file:file
+    }).progress(function(e) {
+      if (onProgress) onProgress(e);
+    }).success(function(data, status, headers, config) {
+      $('#server_response').html(data);
+        onComplete();
+    });
+    
+  }
   
     
   return {
     getTypeList:getTypeList,
     typeList:typeList,
     getFakeDDContent:getDDList,
-    fakeDDContent:fakeDDContent
+    fakeDDContent:fakeDDContent,
+    submitQuoteRequest:submitQuoteRequest
   };
 }])
 
-.controller('RequestQuoteCtrl', ['$scope', 'requestQuoteProvider', function($scope, requestQuoteProvider) {
+.controller('RequestQuoteCtrl', ['$scope', '$upload', 'requestQuoteProvider', function($scope, $upload, requestQuoteProvider) {
     $scope.provider = requestQuoteProvider;
-    
     $scope.quote = {};
-    
     
     function construct() {
       requestQuoteProvider.getTypeList();
       requestQuoteProvider.getFakeDDContent();
+    }
+    
+    $scope.submit = function(quote) {
+      requestQuoteProvider.submitQuoteRequest($scope.quote, file, onUploadProgress, onQuoteSubmitted);
+//      console.log(quote);
+    };
+    
+    function onUploadProgress(e) {
+      console.log('onUploadProgress', e);
+    }
+    
+    function onQuoteSubmitted() {
+      
+    }
+    
+    $scope.formValidClass = function(invalid) {
+      if (invalid) {
+        return 'disabled';
+      }
+    };
+    
+    var file;
+    $scope.onFileSelect = function(files) {
+      file = files[0];
+      console.log('onFileSelect', file);
+    };
+    
+    $scope.autoFill = function() {
+      console.log('autoFill');
+      $scope.quote.clientName = 'Norman Osborne';
+      $scope.quote.clientEmail = 'greengoblin@oscorp.com';
     }
     
     construct();
