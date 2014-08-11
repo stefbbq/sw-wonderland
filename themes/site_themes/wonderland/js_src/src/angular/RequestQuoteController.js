@@ -49,7 +49,9 @@ angular.module('publicSite', [
    * Save to Dropbox
    */
   function submitQuoteRequest(quoteData, file, onProgress, onComplete) {
-    var url = $rootScope.wsDropboxURL + '?action=quoteRequest';
+    var url = $rootScope.wsDropboxURL + '?action=requestQuote';
+    $('#server_response').html('');
+
     $upload.upload({
       url:url,
       method:'POST',
@@ -59,7 +61,7 @@ angular.module('publicSite', [
       if (onProgress) onProgress(e);
     }).success(function(data, status, headers, config) {
       $('#server_response').html(data);
-        onComplete();
+      onComplete();
     });
     
   }
@@ -86,6 +88,10 @@ angular.module('publicSite', [
     $scope.submit = function(quote) {
       requestQuoteProvider.submitQuoteRequest($scope.quote, file, onUploadProgress, onQuoteSubmitted);
 //      console.log(quote);
+    };
+    
+    $scope.formatValue = function(val) {
+      return val + "_a";
     };
     
     function onUploadProgress(e) {

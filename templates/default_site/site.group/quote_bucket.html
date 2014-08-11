@@ -10,7 +10,7 @@
             <label for="clientEmail">Email</label><input id="clientEmail" ng-model="quote.clientEmail" type="clientEmail" required>
           </li>
           <li>
-            <label for="type">Interested In</label><select id="type" ng-model="quote.type" ng-options="type.code as type.name for type in provider.typeList" ></select>
+            <label for="type">Interested In</label><select id="type" ng-model="quote.type" ng-options="type.id as type.name for type in provider.typeList" ></select>
           </li>
           <li>
             <label for="size">Finished Size</label><input id="size" ng-model="quote.size" type="text">
@@ -19,29 +19,29 @@
             <label for="quantity">Quantity</label><input id="quantity" ng-model="quote.quantity" type="text" restrict="0-9">
           </li>
           <li>
-            <label for="pageCount">Number of Pages</label><input id="quantity" ng-model="quote.pageCount" type="text" restrict="0-9">
+            <label for="pageCount">Number of Pages</label><input id="pageCount" ng-model="quote.pageCount" type="text" restrict="0-9">
           </li>
           <li>
-            <label for="finish">Paper Finish</label><select id="finish" ng-model="quote.finish" ng-options="type.code as type.name for type in provider.fakeDDContent"></select>
+            <label for="finish">Paper Finish</label><select id="finish" ng-model="quote.finish" ng-options="type.id as type.name for type in provider.fakeDDContent"></select>
           </li>
           <li>
-            <label for="weight">Paper Weight</label><select id="weight" ng-model="quote.weight" ng-options="type.code as type.name for type in provider.fakeDDContent"></select>
+            <label for="weight">Paper Weight</label><select id="weight" ng-model="quote.weight" ng-options="type.id as type.name for type in provider.fakeDDContent"></select>
           </li>
           <li>
-            <label for="recycled">Recycled Opt.</label><select id="recycled" ng-model="quote.recycled" ng-options="type.code as type.name for type in provider.fakeDDContent"></select>
+            <label for="recycled">Recycled Opt.</label><select id="recycled" ng-model="quote.recycled" ng-options="type.id as type.name for type in provider.fakeDDContent"></select>
           </li>
           <li>
-            <label for="colours">Ink Colours</label><select id="colours" ng-model="quote.colours" ng-options="type.code as type.name for type in provider.fakeDDContent"></select>
+            <label for="colours">Ink Colours</label><select id="colours" ng-model="quote.colours" ng-options="type.id as type.name for type in provider.fakeDDContent"></select>
           </li>
           <li>
-            <label for="sides">Sites to Print</label><select id="sides" ng-model="quote.sides" ng-options="type.code as type.name for type in provider.fakeDDContent"></select>
+            <label for="sides">Sites to Print</label><select id="sides" ng-model="quote.sides" ng-options="type.id as type.name for type in provider.fakeDDContent"></select>
           </li>
           <li>
-            <label for="specialFX">Special Effects</label><select id="specialFX" ng-model="quote.specialFX" ng-options="type.code as type.name for type in provider.fakeDDContent"></select>
+            <label for="specialFX">Special Effects</label><select id="specialFX" ng-model="quote.specialFX" ng-options="type.id as type.name for type in provider.fakeDDContent"></select>
           </li>
           
           <li>
-            <label for="finish">Finish/Binding</label><select id="finish" ng-model="quote.finish" ng-options="type.code as type.name for type in provider.typeList"></select>
+            <label for="binding">Finish/Binding</label><select id="binding" ng-model="quote.binding" ng-options="type.id as type.name for type in provider.typeList"></select>
           </li>
           <li>
             <label for="file">Attach File</label><input id="file" ng-model="quote.file" type="file" ng-file-select="onFileSelect($files)">
@@ -56,6 +56,10 @@
         </ul>
         
       </form>
+      
+      <pre>
+        {{quote}}
+      </pre>
       
       <pre id="server_response"</pre>
     </div>
