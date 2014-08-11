@@ -60,7 +60,7 @@ angular.module('publicSite', [
     }).progress(function(e) {
       if (onProgress) onProgress(e);
     }).success(function(data, status, headers, config) {
-      $('#server_response').html(data);
+      //$('#server_response').html(data);
       onComplete();
     });
     
@@ -99,7 +99,8 @@ angular.module('publicSite', [
     }
     
     function onQuoteSubmitted() {
-      
+      alert("Thank you for your submission.");
+      angular.copy({}, $scope.quote);
     }
     
     $scope.formValidClass = function(invalid) {
