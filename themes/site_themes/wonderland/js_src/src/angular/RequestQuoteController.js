@@ -86,6 +86,7 @@ angular.module('publicSite', [
     }
     
     $scope.submit = function(quote) {
+      $('.request_quote .modalCover').show();
       requestQuoteProvider.submitQuoteRequest($scope.quote, file, onUploadProgress, onQuoteSubmitted);
 //      console.log(quote);
     };
@@ -99,6 +100,7 @@ angular.module('publicSite', [
     }
     
     function onQuoteSubmitted() {
+      $('.request_quote .modalCover').hide();
       alert("Thank you for your submission.");
       angular.copy({}, $scope.quote);
     }
