@@ -65,7 +65,6 @@ angular.module('publicSite', [
       header: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }).success(function(result) {
       angular.copy(result.data, dropdown);
-      console.log(dropdown);
     }).error(function(result) {
       console.log(result);
     });
@@ -130,6 +129,8 @@ angular.module('publicSite', [
       $('.request_quote .modalCover').hide();
       alert("Thank you for your submission.");
       angular.copy({}, $scope.quote);
+      angular.element('#file').val(null);
+      //document.getElementById('file').innerHTML = document.getElementById('file').innerHTML;
     }
     
     $scope.formValidClass = function(invalid) {
@@ -145,9 +146,33 @@ angular.module('publicSite', [
     };
     
     $scope.autoFill = function() {
+      console.log($scope.provider.dropdown.coatingAQ);
+      console.log($scope.provider.dropdown.coatingAQ[1]);
+
       console.log('autoFill');
-      $scope.quote.clientName = 'Norman Osborne';
-      $scope.quote.clientEmail = 'greengoblin@oscorp.com';
+      $scope.quote.clientName = 'Scott Garson';
+      $scope.quote.clientEmail = 'sdgarson@gmail.com';
+      $scope.quote.clientPhone = '5551234567';
+      $scope.quote.type = $scope.provider.typeList[9];
+      $scope.quote.size = '24 x 30';
+      $scope.quote.flatSize = '24 x 30 flat';
+      $scope.quote.foldedSize = '12 x 15 folded';
+      $scope.quote.quantity = '1';
+      $scope.quote.pageCount = '1';
+      $scope.quote.coatingAQ = $scope.provider.dropdown.coatingAQ[1];
+      $scope.quote.coatingVarnish = requestQuoteProvider.dropdown.coatingVarnish[1];
+      $scope.quote.finish = requestQuoteProvider.dropdown.finish[1];
+      $scope.quote.weightText = requestQuoteProvider.dropdown.weightText[1];
+      $scope.quote.weightCover = requestQuoteProvider.dropdown.weightCover[1];
+      $scope.quote.recycled = requestQuoteProvider.dropdown.recycle[1];
+      $scope.quote.colours = requestQuoteProvider.dropdown.colours[4];
+      $scope.quote.sides = requestQuoteProvider.dropdown.sides[0];
+      $scope.quote.specialFX = requestQuoteProvider.dropdown.sfx[1];
+      $scope.quote.binding = requestQuoteProvider.dropdown.binding[1];
+      $scope.quote.description = 'A poster for my collection';
+
+
+
     }
     
     construct();
