@@ -1,8 +1,14 @@
 angular.module('publicSite', [
-  'angularFileUpload'
+  'angularFileUpload',
+  'ui.mask'
 ])
 .run(['$rootScope', '$location', function($rootScope, $location) {
-  switch ($location.host()) {
+  var forceStaging = true;
+  var host = $location.host();
+
+  if (forceStaging) host = 'wonderland-cp.stagebot.net';
+
+  switch (host) {
     case 'wonderland-cp.stagebot.net':
       $rootScope.wsURL = 'http://wonderland-cp.stagebot.net/webservice/WPLAdmin.php?callback=JSON_CALLBACK';
       $rootScope.wsUploadURL = 'http://wonderland-cp.stagebot.net/webservice/WPLAdmin.php';
@@ -14,10 +20,13 @@ angular.module('publicSite', [
       $rootScope.wsDropboxURL = 'http://wonderland-cp.stagebot.net/webservice/WPLAdmin.php';
       break;
   }
+
+
 }])
 .factory('requestQuoteProvider', ['$http', '$rootScope', '$upload', function($http, $rootScope, $upload) {
   var typeList = [];
-  var fakeDDContent = [];
+  var dropdown = {};
+
   function getTypeList() {
     var args = {action:'typeList'};
     
@@ -32,14 +41,31 @@ angular.module('publicSite', [
     });
   }
   
-  function getDDList() {
-    var args = {action:'ddContent'};
+  function getDDList(table, order) {
+    var args = {action:'ddContent', t:table};
+
+    if (order != null) args.order = order;
     
     $http.jsonp($rootScope.wsURL, {
       params:args,
       header: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }).success(function(result) {
-      angular.copy(result.data, fakeDDContent);
+      angular.copy(result.data, dropdown[table]);
+      console.log(table, dropdown);
+    }).error(function(result) {
+      console.log(result);
+    });
+  }
+
+  function getRFQContent() {
+    var args = {action:'getRFQDropdownContent'};
+
+    $http.jsonp($rootScope.wsURL, {
+      params:args,
+      header: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    }).success(function(result) {
+      angular.copy(result.data, dropdown);
+      console.log(dropdown);
     }).error(function(result) {
       console.log(result);
     });
@@ -70,9 +96,10 @@ angular.module('publicSite', [
   return {
     getTypeList:getTypeList,
     typeList:typeList,
-    getFakeDDContent:getDDList,
-    fakeDDContent:fakeDDContent,
-    submitQuoteRequest:submitQuoteRequest
+    getDDList:getDDList,
+    getRFQContent:getRFQContent,
+    submitQuoteRequest:submitQuoteRequest,
+    dropdown:dropdown
   };
 }])
 
@@ -82,7 +109,7 @@ angular.module('publicSite', [
     
     function construct() {
       requestQuoteProvider.getTypeList();
-      requestQuoteProvider.getFakeDDContent();
+      requestQuoteProvider.getRFQContent();
     }
     
     $scope.submit = function(quote) {
@@ -125,5 +152,6 @@ angular.module('publicSite', [
     
     construct();
 }])
+
 
 ;
