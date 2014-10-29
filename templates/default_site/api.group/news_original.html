@@ -1,0 +1,11 @@
+<?php
+  $callback = htmlspecialchars($_GET['callback']);
+  header('Content-Type: application/json');
+  echo ($callback . '(');
+?>
+{exp:channel:entries channel="global"}
+  {"news":"{latest_news}"}
+{/exp:channel:entries}	
+<?php
+  echo (');');
+?>
