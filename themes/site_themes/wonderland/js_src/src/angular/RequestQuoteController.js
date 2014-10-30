@@ -65,6 +65,7 @@ angular.module('publicSite', [
       header: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }).success(function(result) {
       angular.copy(result.data, dropdown);
+      console.log(dropdown);
     }).error(function(result) {
       console.log(result);
     });
@@ -104,17 +105,32 @@ angular.module('publicSite', [
 
 .controller('RequestQuoteCtrl', ['$scope', '$upload', 'requestQuoteProvider', function($scope, $upload, requestQuoteProvider) {
     $scope.provider = requestQuoteProvider;
-    $scope.quote = {};
+    $scope.quote = {
+      sides:'',
+      ink:'',
+      coatingAQ:'',
+      coatingVarnish:'',
+      weightText:'',
+      weightCover:'',
+      paperFinish:'',
+      finishing:''
+    };
+
     
     function construct() {
       requestQuoteProvider.getTypeList();
       requestQuoteProvider.getRFQContent();
     }
     
-    $scope.submit = function(quote) {
+    $scope.submit = function() {
       $('.request_quote .modalCover').show();
-      requestQuoteProvider.submitQuoteRequest($scope.quote, file, onUploadProgress, onQuoteSubmitted);
-//      console.log(quote);
+      var quote = {};
+      for (var a in $scope.quote) {
+        if ($scope.quote[a] != '') quote[a] = $scope.quote[a];
+      }
+
+      requestQuoteProvider.submitQuoteRequest(quote, file, onUploadProgress, onQuoteSubmitted);
+      //console.log(quote);
     };
     
     $scope.formatValue = function(val) {
@@ -142,36 +158,26 @@ angular.module('publicSite', [
     var file;
     $scope.onFileSelect = function(files) {
       file = files[0];
-      console.log('onFileSelect', file);
     };
     
     $scope.autoFill = function() {
-      console.log($scope.provider.dropdown.coatingAQ);
-      console.log($scope.provider.dropdown.coatingAQ[1]);
-
-      console.log('autoFill');
       $scope.quote.clientName = 'Scott Garson';
       $scope.quote.clientEmail = 'sdgarson@gmail.com';
       $scope.quote.clientPhone = '5551234567';
-      $scope.quote.type = $scope.provider.typeList[9];
-      $scope.quote.size = '24 x 30';
+      $scope.quote.quantity = '1';
+      $scope.quote.description = 'A poster for my bunk';
       $scope.quote.flatSize = '24 x 30 flat';
       $scope.quote.foldedSize = '12 x 15 folded';
-      $scope.quote.quantity = '1';
-      $scope.quote.pageCount = '1';
-      $scope.quote.coatingAQ = $scope.provider.dropdown.coatingAQ[1];
-      $scope.quote.coatingVarnish = requestQuoteProvider.dropdown.coatingVarnish[1];
-      $scope.quote.finish = requestQuoteProvider.dropdown.finish[1];
-      $scope.quote.weightText = requestQuoteProvider.dropdown.weightText[1];
-      $scope.quote.weightCover = requestQuoteProvider.dropdown.weightCover[1];
-      $scope.quote.recycled = requestQuoteProvider.dropdown.recycle[1];
-      $scope.quote.colours = requestQuoteProvider.dropdown.colours[4];
-      $scope.quote.sides = requestQuoteProvider.dropdown.sides[0];
-      $scope.quote.specialFX = requestQuoteProvider.dropdown.sfx[1];
-      $scope.quote.binding = requestQuoteProvider.dropdown.binding[1];
-      $scope.quote.description = 'A poster for my collection';
-
-
+      $scope.quote.sides  = requestQuoteProvider.dropdown.sides[1].code;
+      $scope.quote.ink    = requestQuoteProvider.dropdown.ink[1].code;
+      $scope.quote.coatingAQ = requestQuoteProvider.dropdown.coatingAQ[1].code;
+      $scope.quote.coatingVarnish = requestQuoteProvider.dropdown.coatingVarnish[1].code;
+      $scope.quote.weightText = requestQuoteProvider.dropdown.weightText[1].code;
+      $scope.quote.weightCover = requestQuoteProvider.dropdown.weightCover[1].code;
+      $scope.quote.paperFinish = requestQuoteProvider.dropdown.paperFinish[1].code;
+      $scope.quote.finishing = requestQuoteProvider.dropdown.finishing[1].code;
+      $scope.quote.finishingReq = 'Make it shiny';
+      $scope.quote.specialInstructions = 'Make it look nice';
 
     }
     
