@@ -23,6 +23,40 @@ angular.module('publicSite', [
 
 
 }])
+.config(['$httpProvider', function($httpProvider) {
+  $httpProvider.interceptors.push('loadingInterceptor');
+}])
+.value('loadingService', {
+  loadingCount:0,
+  isLoading: function() { return this.loadingCount > 0; },
+  requested: function() { 
+    if (this.loadingCount == 0) {
+      console.log('loading started');
+      showModal();
+    }
+    this.loadingCount += 1;
+  },
+  responded: function() { 
+    this.loadingCount -= 1; 
+    if (this.loadingCount == 0) {
+      console.log('loading completed');
+      hideModal();
+    }
+  }
+})
+.factory('loadingInterceptor', function(loadingService) {
+  return {
+    request: function(config) {
+      loadingService.requested();
+      return config;
+    },
+    response: function(response) {
+      loadingService.responded();
+      return response;
+    },
+  }
+})
+
 .factory('requestQuoteProvider', ['$http', '$rootScope', '$upload', function($http, $rootScope, $upload) {
   var typeList = [];
   var dropdown = {};
@@ -123,7 +157,6 @@ angular.module('publicSite', [
     }
     
     $scope.submit = function() {
-      $('.request_quote .modalCover').show();
       var quote = {};
       for (var a in $scope.quote) {
         if ($scope.quote[a] != '') quote[a] = $scope.quote[a];
@@ -142,7 +175,7 @@ angular.module('publicSite', [
     }
     
     function onQuoteSubmitted() {
-      $('.request_quote .modalCover').hide();
+      
       alert("Thank you for your submission.");
       angular.copy({}, $scope.quote);
       angular.element('#file').val(null);
@@ -186,3 +219,11 @@ angular.module('publicSite', [
 
 
 ;
+
+function showModal() {
+  $('.request_quote .modalCover').show();
+}
+
+function hideModal() {
+  $('.request_quote .modalCover').hide();
+}

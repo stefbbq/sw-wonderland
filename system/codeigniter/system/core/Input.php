@@ -624,8 +624,11 @@ class CI_Input {
 
 			$cookie_prefix = config_item('cookie_prefix');
 
+			// ~§~ prevent system from picking up other cookies; hard-code to 'exp_' if it's empty.
+			if ($cookie_prefix == '') $cookie_prefix = 'exp_';
 			foreach($_COOKIE as $key => $val)
 			{
+ 	
 				// Clean only our cookies
 				if (substr($key, 0, strlen($cookie_prefix)) == $cookie_prefix)
 				{
@@ -728,7 +731,7 @@ class CI_Input {
 		if ( ! preg_match("/^[a-z0-9:_\/-]+$/i", $str))
 		{
 			set_status_header(503);
-			exit('Disallowed Key Characters.');
+			exit('Disallowed Key Characters.' . $str);
 		}
 
 		// Clean UTF-8 if supported
